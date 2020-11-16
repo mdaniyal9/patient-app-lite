@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:patient_app_test_flutter/login.dart';
+import 'package:patient_app_test_flutter/splash.dart';
 import 'models.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:device_info/device_info.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:local_auth/local_auth.dart';
 
 
-void main() => runApp(MyAPPHTTP());
+
+// void main() => runApp(MyAPPHTTP());
+void main() => runApp(MaterialApp(
+  initialRoute: '/',
+  routes: {
+    '/': (context) => Splash(),
+    '/login': (context) => Login(),
+  },
+));
 
 class MyAPPHTTP extends StatelessWidget {
   @override
@@ -37,6 +48,7 @@ class MyAppState extends State<MyApp> {
 
   // Create storage
   final storage = new FlutterSecureStorage();
+
 
   String url = "https://dev4.cognitivehealthintl.com/auth/Login2";
 
