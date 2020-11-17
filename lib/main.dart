@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:patient_app_test_flutter/login.dart';
+import 'package:patient_app_test_flutter/siteCode.dart';
 import 'package:patient_app_test_flutter/splash.dart';
 import 'models.dart';
 import 'dart:convert';
@@ -13,10 +14,11 @@ import 'package:local_auth/local_auth.dart';
 
 // void main() => runApp(MyAPPHTTP());
 void main() => runApp(MaterialApp(
-  initialRoute: '/',
+  initialRoute: '/siteCode',
   routes: {
     '/': (context) => Splash(),
     '/login': (context) => Login(),
+    '/siteCode': (context) => SiteCode(),
   },
 ));
 
