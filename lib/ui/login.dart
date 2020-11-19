@@ -7,6 +7,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:patient_app_test_flutter/models/loginResponse.dart';
+import 'package:patient_app_test_flutter/repository/repo.dart';
+import 'package:toast/toast.dart';
 // import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 const en = Locale("en", "UK");
@@ -25,6 +28,10 @@ class _LoginState extends State<Login> {
 
   TextEditingController usernameControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
+  bool _validateUsername = false;
+  bool _validatePassword = false;
+  Repository _Repository;
+
 
   bool _passwordVisible = false;
   bool isSwitched = false;
@@ -36,6 +43,7 @@ class _LoginState extends State<Login> {
   void initState() {
     super.initState();
     _passwordVisible = false;
+    _Repository = Repository();
     SystemChannels.textInput.invokeMethod('TextInput.hide');
   }
 
@@ -153,6 +161,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       labelText: 'Username',
+                      errorText: _validateUsername ? 'Username Can\'t Be Empty' : null,
                       prefixIcon: Icon(Icons.person_outline),
                     ),
                   ),
@@ -170,6 +179,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       labelText: 'Password',
+                      errorText: _validatePassword ? 'Password Can\'t Be Empty' : null,
                       prefixIcon: Icon(
                         Icons.lock_outline,
                       ),
@@ -241,7 +251,24 @@ class _LoginState extends State<Login> {
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(40.0),
                     ),
-                    onPressed: (){},
+                    onPressed: () async {
+                      setState(() {
+                        usernameControler.text.isEmpty ? _validateUsername = true : _validateUsername = false;
+                        passwordControler.text.isEmpty ? _validatePassword = true : _validatePassword = false;
+                      });
+                      if(!_validateUsername && !_validatePassword) {
+                        try {
+                          LoginResponse response = await _Repository.DoLogin(usernameControler.text, passwordControler.text);
+                          LoginData data = response.data;
+                          print("Token is ${data.token}");
+
+                          // Navigator.pushReplacementNamed(context, '/');
+                        } catch (e) {
+                          Toast.show("Username or Password Mismatch", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                          print(e);
+                        }
+                      }
+                    },
                   ),
                 ),
               ],

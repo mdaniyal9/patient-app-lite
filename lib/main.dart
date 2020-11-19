@@ -16,13 +16,14 @@ import 'package:local_auth/local_auth.dart';
 
 // void main() => runApp(MyAPPHTTP());
 void main() async{
-  await App.init();
+  App.init();
   runApp(MaterialApp(
     initialRoute: '/siteCode',
     routes: {
+      '/siteCode': (context) => SiteCode(),
       '/': (context) => Splash(),
       '/login': (context) => Login(),
-      '/siteCode': (context) => SiteCode(),
+
     },
   ));
 }

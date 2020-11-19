@@ -19,7 +19,7 @@ class SiteCode extends StatefulWidget {
 class _SplashState extends State<SiteCode> {
 
   TextEditingController siteCodeControler = TextEditingController();
-  bool _validate = false;
+  bool _validateSiteCode = false;
 
 
   // Create storage
@@ -94,8 +94,8 @@ class _SplashState extends State<SiteCode> {
                         ),
                       ),
                       labelText: 'Site Code',
-                      errorText: _validate ? 'Site Code Can\'t Be Empty' : null,
-                      prefixIcon: _validate ? Icon(
+                      errorText: _validateSiteCode ? 'Site Code Can\'t Be Empty' : null,
+                      prefixIcon: _validateSiteCode ? Icon(
                         Icons.location_on_outlined,
                         color: Colors.red,
                       ) : Icon(
@@ -122,14 +122,14 @@ class _SplashState extends State<SiteCode> {
                     ),
                     onPressed: () async {
                       setState(() {
-                        siteCodeControler.text.isEmpty ? _validate = true : _validate = false;
+                        siteCodeControler.text.isEmpty ? _validateSiteCode = true : _validateSiteCode = false;
                       });
-                      if(!_validate) {
+                      if(!_validateSiteCode) {
                         try {
                           Languages languages = await _Repository.GetSystemLanguages(siteCodeControler.text);
-                          List<Data> data = languages.data;
+                          List<LanguageData> data = languages.data;
                           print("First language is ${data[0].languageName}");
-                          // App.localStorage.write(key: null, value: null);
+                          App.localStorage.write(key: 'siteCode', value: siteCodeControler.text);
                           Navigator.pushReplacementNamed(context, '/');
                         } catch (e) {
                           Toast.show("Invalid Site Code", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);

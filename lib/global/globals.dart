@@ -1,9 +1,10 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class App {
-  static FlutterSecureStorage localStorage;
-  static Future init() async {
+  // static FlutterSecureStorage localStorage;
+  static var localStorage;
+  static Future init()  {
     // Create storage
-    final localStorage = await FlutterSecureStorage();
+    localStorage = new FlutterSecureStorage();
   }
 }

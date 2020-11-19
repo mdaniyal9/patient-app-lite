@@ -5,20 +5,20 @@
 /// Duration : 0.041
 
 class Languages {
-  List<Data> _data;
+  List<LanguageData> _data;
   int _totalRecords;
   String _status;
   double _time;
   double _duration;
 
-  List<Data> get data => _data;
+  List<LanguageData> get data => _data;
   int get totalRecords => _totalRecords;
   String get status => _status;
   double get time => _time;
   double get duration => _duration;
 
   Languages({
-      List<Data> data, 
+      List<LanguageData> data, 
       int totalRecords, 
       String status, 
       double time, 
@@ -34,7 +34,7 @@ class Languages {
     if (json["data"] != null) {
       _data = [];
       json["data"].forEach((v) {
-        _data.add(Data.fromJson(v));
+        _data.add(LanguageData.fromJson(v));
       });
     }
     _totalRecords = json["total_records"];
@@ -63,7 +63,7 @@ class Languages {
 /// language_native_name : "Arabic-SA"
 /// remaining_translations_count : 0
 
-class Data {
+class LanguageData {
   String _languageId;
   String _languageVersion;
   String _languageName;
@@ -76,7 +76,7 @@ class Data {
   String get languageNativeName => _languageNativeName;
   int get remainingTranslationsCount => _remainingTranslationsCount;
 
-  Data({
+  LanguageData({
       String languageId, 
       String languageVersion, 
       String languageName, 
@@ -89,7 +89,7 @@ class Data {
     _remainingTranslationsCount = remainingTranslationsCount;
 }
 
-  Data.fromJson(dynamic json) {
+  LanguageData.fromJson(dynamic json) {
     _languageId = json["language_id"];
     _languageVersion = json["language_version"];
     _languageName = json["language_name"];
