@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:patient_app_test_flutter/login.dart';
-import 'package:patient_app_test_flutter/siteCode.dart';
-import 'package:patient_app_test_flutter/splash.dart';
-import 'models.dart';
+import 'package:patient_app_test_flutter/global/globals.dart';
+import 'package:patient_app_test_flutter/ui/login.dart';
+import 'package:patient_app_test_flutter/ui/siteCode.dart';
+import 'package:patient_app_test_flutter/ui/splash.dart';
+import 'models/models.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:device_info/device_info.dart';
@@ -13,14 +15,17 @@ import 'package:local_auth/local_auth.dart';
 
 
 // void main() => runApp(MyAPPHTTP());
-void main() => runApp(MaterialApp(
-  initialRoute: '/siteCode',
-  routes: {
-    '/': (context) => Splash(),
-    '/login': (context) => Login(),
-    '/siteCode': (context) => SiteCode(),
-  },
-));
+void main() async{
+  await App.init();
+  runApp(MaterialApp(
+    initialRoute: '/siteCode',
+    routes: {
+      '/': (context) => Splash(),
+      '/login': (context) => Login(),
+      '/siteCode': (context) => SiteCode(),
+    },
+  ));
+}
 
 class MyAPPHTTP extends StatelessWidget {
   @override
@@ -49,7 +54,7 @@ class MyAppState extends State<MyApp> {
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
   // Create storage
-  final storage = new FlutterSecureStorage();
+  // final storage = new FlutterSecureStorage();
 
 
   String url = "https://dev4.cognitivehealthintl.com/auth/Login2";
@@ -102,7 +107,7 @@ class MyAppState extends State<MyApp> {
 
       response = APIResponse.fromJson(jsonResponse);
       // Write value
-      await storage.write(key: "token", value: response.token);
+      // await storage.write(key: "token", value: response.token);++++++++++++++++++++++++++++
 
       return response.token;
     }
@@ -186,8 +191,8 @@ class MyAppState extends State<MyApp> {
                           print(passwordControler.text);
                           await doLogin(usernameControler.text, passwordControler.text);
                           // Read value
-                          String value = await storage.read(key: "token");
-                          print("Token is $value");
+                          // String value = await storage.read(key: "token");++++++++++++++++++++++++++++++
+                          // print("Token is $value");
                         },
                       )),
                   Container(
