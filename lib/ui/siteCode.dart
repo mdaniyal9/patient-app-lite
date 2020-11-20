@@ -116,7 +116,7 @@ class _SplashState extends State<SiteCode> {
                         fontSize: ScreenUtil.instance.setSp(24.0),
                       ),
                     ),
-                    color: Colors.blueGrey,
+                    color: const Color(0xff387b96),
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(40.0),
                     ),

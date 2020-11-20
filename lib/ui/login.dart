@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:patient_app_test_flutter/global/globals.dart';
 import 'package:patient_app_test_flutter/models/loginResponse.dart';
 import 'package:patient_app_test_flutter/repository/repo.dart';
 import 'package:toast/toast.dart';
@@ -134,7 +135,8 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                     icon: Icon(
-                        Icons.arrow_forward_ios_outlined
+                      Icons.arrow_forward_ios_outlined,
+                      color: const Color(0xff387b96),
                     ),
                     onChanged: (value) {
                       setState(() {
@@ -214,7 +216,7 @@ class _LoginState extends State<Login> {
                         padding: 4.0,
                         toggleSize: 15.0,
                         borderRadius: 10.0,
-                        activeColor: Colors.cyan,
+                        activeColor: const Color(0xff387b96),
                         value: isSwitched,
                         onToggle: (value) {
                           setState(() {
@@ -227,7 +229,7 @@ class _LoginState extends State<Login> {
                         child: Text(
                           'Forgot Password?',
                           style: TextStyle(
-                              color: Colors.blue
+                              color: const Color(0xff387b96)
                           ),
                         ),
                         onPressed: (){},
@@ -247,7 +249,7 @@ class _LoginState extends State<Login> {
                         fontSize: ScreenUtil.instance.setSp(24.0)
                       ),
                     ),
-                    color: Colors.blueGrey,
+                    color: const Color(0xff387b96),
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(40.0),
                     ),
@@ -262,7 +264,9 @@ class _LoginState extends State<Login> {
                           LoginData data = response.data;
                           print("Token is ${data.token}");
 
-                          // Navigator.pushReplacementNamed(context, '/');
+                          App.localStorage.write(key: 'token', value: data.token);
+
+                          Navigator.pushReplacementNamed(context, '/home');
                         } catch (e) {
                           Toast.show("Username or Password Mismatch", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                           print(e);

@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:patient_app_test_flutter/global/globals.dart';
+import 'package:patient_app_test_flutter/ui/home.dart';
 import 'package:patient_app_test_flutter/ui/login.dart';
 import 'package:patient_app_test_flutter/ui/siteCode.dart';
 import 'package:patient_app_test_flutter/ui/splash.dart';
@@ -23,6 +24,7 @@ void main() async{
       '/siteCode': (context) => SiteCode(),
       '/': (context) => Splash(),
       '/login': (context) => Login(),
+      '/home': (context) => Home(),
 
     },
   ));
