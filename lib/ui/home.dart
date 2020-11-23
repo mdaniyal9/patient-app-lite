@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bezier_chart/bezier_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:analog_clock/analog_clock.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,6 +20,162 @@ class _HomeState extends State<Home> {
 
   final _currentPageNotifier = ValueNotifier<int>(0);
   final controller = PageController(viewportFraction: 1.0);
+
+  LineChartData sampleData2() {
+    return LineChartData(
+      lineTouchData: LineTouchData(
+        enabled: false,
+      ),
+      gridData: FlGridData(
+        show: false,
+      ),
+      titlesData: FlTitlesData(
+        bottomTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 22,
+          getTextStyles: (value) => const TextStyle(
+            // color: Color(0xff72719b),
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          margin: 10,
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 2:
+                return 'SEPT';
+              case 7:
+                return 'OCT';
+              case 12:
+                return 'DEC';
+            }
+            return '';
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: true,
+          getTextStyles: (value) => const TextStyle(
+            // color: Color(0xff75729e),
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 1:
+                return '1m';
+              case 2:
+                return '2m';
+              case 3:
+                return '3m';
+              case 4:
+                return '5m';
+              case 5:
+                return '6m';
+            }
+            return '';
+          },
+          margin: 8,
+          reservedSize: 30,
+        ),
+      ),
+      borderData: FlBorderData(
+          show: true,
+          border: const Border(
+            bottom: BorderSide(
+              // color: Color(0xff4e4965),
+              color: Colors.white,
+              width: 4,
+            ),
+            left: BorderSide(
+              color: Colors.transparent,
+            ),
+            right: BorderSide(
+              color: Colors.transparent,
+            ),
+            top: BorderSide(
+              color: Colors.transparent,
+            ),
+          )),
+      minX: 0,
+      maxX: 14,
+      maxY: 6,
+      minY: 0,
+      lineBarsData: linesBarData2(),
+    );
+  }
+
+  List<LineChartBarData> linesBarData2() {
+    return [
+      // LineChartBarData(
+      //   spots: [
+      //     FlSpot(1, 1),
+      //     FlSpot(3, 4),
+      //     FlSpot(5, 1.8),
+      //     FlSpot(7, 5),
+      //     FlSpot(10, 2),
+      //     FlSpot(12, 2.2),
+      //     FlSpot(13, 1.8),
+      //   ],
+      //   isCurved: true,
+      //   curveSmoothness: 0,
+      //   colors: const [
+      //     Color(0x444af699),
+      //   ],
+      //   barWidth: 4,
+      //   isStrokeCapRound: true,
+      //   dotData: FlDotData(
+      //     show: false,
+      //   ),
+      //   belowBarData: BarAreaData(
+      //     show: false,
+      //   ),
+      // ),
+      // LineChartBarData(
+      //   spots: [
+      //     FlSpot(1, 1),
+      //     FlSpot(3, 2.8),
+      //     FlSpot(7, 1.2),
+      //     FlSpot(10, 2.8),
+      //     FlSpot(12, 2.6),
+      //     FlSpot(13, 3.9),
+      //   ],
+      //   isCurved: true,
+      //   colors: const [
+      //     Color(0x99aa4cfc),
+      //   ],
+      //   barWidth: 4,
+      //   isStrokeCapRound: true,
+      //   dotData: FlDotData(
+      //     show: false,
+      //   ),
+      //   belowBarData: BarAreaData(show: true, colors: [
+      //     const Color(0x33aa4cfc),
+      //   ]),
+      // ),
+      LineChartBarData(
+        spots: [
+          FlSpot(1, 3.8),
+          FlSpot(3, 1.9),
+          FlSpot(6, 5),
+          FlSpot(10, 3.3),
+          FlSpot(13, 4.5),
+        ],
+        isCurved: true,
+        curveSmoothness: 0,
+        colors: const [
+          // Color(0x4427b6fc),
+          Color(0xffffffff),
+        ],
+        barWidth: 2,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: true),
+        belowBarData: BarAreaData(
+          show: false,
+        ),
+      ),
+    ];
+  }
 
   _buildCircleIndicator2() {
     return CirclePageIndicator(
@@ -521,6 +679,136 @@ class _HomeState extends State<Home> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: const Color(0xffd17b58),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                // mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    "Historical",
+                                    style: TextStyle(
+                                        color: Colors.white
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: ListView.builder(
+                                      itemBuilder: (context, position) {
+                                        return Column(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                color: const Color(0x33ffffff),
+                                                height: ScreenUtil.instance.setHeight(58),
+                                                width: ScreenUtil.instance.setWidth(51),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Text(
+                                                      "B.P",
+                                                      style: TextStyle(
+                                                          color: Colors.white
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.medical_services_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ],
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        );
+                                      },
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: 20,
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 5,
+                                    thickness: 2,
+                                    indent: 0,
+                                    endIndent: 0,
+                                  ),
+                                  Container(
+                                    height: ScreenUtil.instance.setHeight(200),
+                                    width: ScreenUtil.instance.setWidth(350),
+                                    // child: BezierChart(
+                                    //   bezierChartScale: BezierChartScale.CUSTOM,
+                                    //   xAxisCustomValues: const [0, 5, 10, 15, 20, 25, 30, 35],
+                                    //   series: const [
+                                    //     BezierLine(
+                                    //       label: "Custom 1",
+                                    //       data: const [
+                                    //         DataPoint<double>(value: 10, xAxis: 0),
+                                    //         DataPoint<double>(value: 130, xAxis: 5),
+                                    //         DataPoint<double>(value: 50, xAxis: 10),
+                                    //         DataPoint<double>(value: 150, xAxis: 15),
+                                    //         DataPoint<double>(value: 75, xAxis: 20),
+                                    //         DataPoint<double>(value: 0, xAxis: 25),
+                                    //         DataPoint<double>(value: 5, xAxis: 30),
+                                    //         DataPoint<double>(value: 45, xAxis: 35),
+                                    //       ],
+                                    //     ),
+                                    //     BezierLine(
+                                    //       lineColor: Colors.blue,
+                                    //       lineStrokeWidth: 2.0,
+                                    //       label: "Custom 2",
+                                    //       data: const [
+                                    //         DataPoint<double>(value: 5, xAxis: 0),
+                                    //         DataPoint<double>(value: 50, xAxis: 5),
+                                    //         DataPoint<double>(value: 30, xAxis: 10),
+                                    //         DataPoint<double>(value: 30, xAxis: 15),
+                                    //         DataPoint<double>(value: 50, xAxis: 20),
+                                    //         DataPoint<double>(value: 40, xAxis: 25),
+                                    //         DataPoint<double>(value: 10, xAxis: 30),
+                                    //         DataPoint<double>(value: 30, xAxis: 35),
+                                    //       ],
+                                    //     ),
+                                    //   ],
+                                    //   config: BezierChartConfig(
+                                    //     verticalIndicatorStrokeWidth: 3.0,
+                                    //     verticalIndicatorColor: Colors.black26,
+                                    //     showVerticalIndicator: true,
+                                    //     backgroundColor: const Color(0xffd17b58),
+                                    //     snap: false,
+                                    //   ),
+                                    // ),
+                                    child: LineChart(
+                                        sampleData2(),
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 5,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                                      child: RaisedButton(
+                                        color: const Color(0xffd17b58),
+                                        onPressed: (){},
+                                        child: Text(
+                                          "See All",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                            side: BorderSide(color: Colors.black26)
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Container(
