@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
+import 'package:analog_clock/analog_clock.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -114,16 +115,47 @@ class _HomeState extends State<Home> {
                               color: const Color(0xff387b96)
                           ),
                           child: Container(
-                            child: Container(
-                                child: Center(
-                                    child: CircleAvatar(
-                                      child: Text(
-                                        '120/90',
-                                      ),
-                                      backgroundColor: const Color(0xffffffff),
-                                      radius: ScreenUtil.instance.setHeight(100.0),
+                            child: Stack(
+                              children: [
+                                Container(
+                                    child: Center(
+                                        child: CircleAvatar(
+                                          child: Text(
+                                            '120/90',
+                                            style: TextStyle(
+                                              fontSize: ScreenUtil.instance.setSp(40.0),
+                                              color: Colors.white
+                                            ),
+                                          ),
+                                          backgroundColor: const Color(0x33ffffff),
+                                          // backgroundColor: Colors.transparent,
+                                          radius: ScreenUtil.instance.setHeight(100.0),
+                                        ),
                                     ),
                                 ),
+                                Container(
+                                  child: Center(
+                                    child: AnalogClock(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(width: ScreenUtil.instance.setWidth(10.0), color: const Color(0x33ffffff)),
+                                          color: Colors.transparent,
+                                          shape: BoxShape.circle),
+                                      width: ScreenUtil.instance.setWidth(270.0),
+                                      height: ScreenUtil.instance.setHeight(270.0),
+                                      isLive: true,
+                                      hourHandColor: Colors.transparent,
+                                      minuteHandColor: Colors.transparent,
+                                      showSecondHand: false,
+                                      numberColor: Colors.white,
+                                      showNumbers: true,
+                                      textScaleFactor: 1.4,
+                                      showTicks: false,
+                                      showDigitalClock: false,
+                                      // datetime: DateTime(2019, 1, 1, 9, 12, 15),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
