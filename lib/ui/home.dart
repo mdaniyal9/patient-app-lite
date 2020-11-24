@@ -4,6 +4,7 @@ import 'package:bezier_chart/bezier_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:patient_app_test_flutter/repository/repo.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
 import 'package:analog_clock/analog_clock.dart';
@@ -20,6 +21,7 @@ class _HomeState extends State<Home> {
 
   final _currentPageNotifier = ValueNotifier<int>(0);
   final controller = PageController(viewportFraction: 1.0);
+  Repository _Repository;
 
   LineChartData sampleData2() {
     return LineChartData(
@@ -217,6 +219,8 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     SystemChannels.textInput.invokeMethod('TextInput.hide');
+    _Repository = Repository();
+    _Repository.GetPatientInfo();
   }
 
   @override

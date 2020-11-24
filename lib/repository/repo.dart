@@ -21,4 +21,9 @@ class Repository {
     final response = await _helper.postWithBody("/auth/Login2", username, password);
     return LoginResponse.fromJson(response);
   }
+
+  Future<LoginResponse> GetPatientInfo() async {
+    final response = await _helper.postWithBodyAndToken("/api/patient_app2/GetPatientInfo");
+    return LoginResponse.fromJson(response);
+  }
 }

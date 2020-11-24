@@ -8,7 +8,7 @@ class ApiBaseHelper {
 
   String _baseUrl = "";
 
-  Map body = {
+  Map loginBody = {
     "username": "", //"daniyalP",
     "password": "", //"Daniyal@1",
     "device_id": "c5d1a020b3f0d620",
@@ -58,8 +58,8 @@ class ApiBaseHelper {
   Future<dynamic> postWithBody(String url, String username, String password) async {
     var responseJson;
     String siteCode = await App.localStorage.read(key: 'siteCode');
-    body['username'] = username;
-    body['password'] = password;
+    loginBody['username'] = username;
+    loginBody['password'] = password;
     _baseUrl = "https://$siteCode.cognitivehealthintl.com";
     try {
       final response = await http.post(
@@ -68,7 +68,30 @@ class ApiBaseHelper {
           "Cookie": "_xsrf=2|0a03a1c2|c45f715c5df81edf12b3a274d39cad5c|1575446079",
           "X-XSRFToken": "2|0a03a1c2|c45f715c5df81edf12b3a274d39cad5c|1575446079"
         },
-          body: jsonEncode(body),
+          body: jsonEncode(loginBody),
+
+      );
+      responseJson = _returnResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet connection');
+    }
+    return responseJson;
+  }
+
+  Future<dynamic> postWithBodyAndToken(String url) async {
+    var responseJson;
+    String siteCode = await App.localStorage.read(key: 'siteCode');
+    String token = await App.localStorage.read(key: 'token');
+    _baseUrl = "https://$siteCode.cognitivehealthintl.com";
+    try {
+      final response = await http.post(
+        _baseUrl + url,
+        headers: {
+          "Cookie": "_xsrf=2|0a03a1c2|c45f715c5df81edf12b3a274d39cad5c|1575446079",
+          "X-XSRFToken": "2|0a03a1c2|c45f715c5df81edf12b3a274d39cad5c|1575446079",
+          "Authorization": token
+        },
+        // body: jsonEncode(body),
 
       );
       responseJson = _returnResponse(response);
