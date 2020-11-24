@@ -24,10 +24,10 @@ class _HomeState extends State<Home> {
   LineChartData sampleData2() {
     return LineChartData(
       lineTouchData: LineTouchData(
-        enabled: false,
+        enabled: true,
       ),
       gridData: FlGridData(
-        show: false,
+        show: true,
       ),
       titlesData: FlTitlesData(
         bottomTitles: SideTitles(
@@ -36,18 +36,40 @@ class _HomeState extends State<Home> {
           getTextStyles: (value) => const TextStyle(
             // color: Color(0xff72719b),
             color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
+            // fontWeight: FontWeight.bold,
+            fontSize: 10,
           ),
-          margin: 10,
+          margin: 5.0,
           getTitles: (value) {
             switch (value.toInt()) {
+              case 1:
+                return '1';
               case 2:
-                return 'SEPT';
+                return '2';
+              case 3:
+                return '3';
+              case 4:
+                return '4';
+              case 5:
+                return '5';
+              case 6:
+                return '6';
               case 7:
-                return 'OCT';
+                return '7';
+              case 8:
+                return '8';
+              case 9:
+                return '9';
+              case 10:
+                return '10';
+              case 11:
+                return '11';
               case 12:
-                return 'DEC';
+                return '12';
+              case 13:
+                return '13';
+              // case 14:
+              //   return '14';
             }
             return '';
           },
@@ -57,25 +79,27 @@ class _HomeState extends State<Home> {
           getTextStyles: (value) => const TextStyle(
             // color: Color(0xff75729e),
             color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
+            // fontWeight: FontWeight.bold,
+            fontSize: 10,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
-                return '1m';
+                return '1';
               case 2:
-                return '2m';
+                return '2';
               case 3:
-                return '3m';
+                return '3';
               case 4:
-                return '5m';
+                return '4';
               case 5:
-                return '6m';
+                return '5';
+              // case 6:
+              //   return '6';
             }
             return '';
           },
-          margin: 8,
+          margin: 5.0,
           reservedSize: 30,
         ),
       ),
@@ -84,8 +108,9 @@ class _HomeState extends State<Home> {
           border: const Border(
             bottom: BorderSide(
               // color: Color(0xff4e4965),
-              color: Colors.white,
-              width: 4,
+              // color: Colors.white,
+              color: Colors.transparent,
+              // width: 3,
             ),
             left: BorderSide(
               color: Colors.transparent,
@@ -698,7 +723,11 @@ class _HomeState extends State<Home> {
                                             Padding(
                                               padding: const EdgeInsets.all(8.0),
                                               child: Container(
-                                                color: const Color(0x33ffffff),
+                                                // color: const Color(0x33ffffff),
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5.0),
+                                                  color: const Color(0x33ffffff),
+                                                ),
                                                 height: ScreenUtil.instance.setHeight(58),
                                                 width: ScreenUtil.instance.setWidth(51),
                                                 child: Column(
@@ -818,6 +847,290 @@ class _HomeState extends State<Home> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: const Color(0xff387b96),
                               ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                // mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    "Compliance",
+                                    style: TextStyle(
+                                        color: Colors.white
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: ListView(
+                                      children: <Widget>[
+                                        Column(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                color: const Color(0x33ffffff),
+                                                height: ScreenUtil.instance.setHeight(44),
+                                                width: ScreenUtil.instance.setWidth(155),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Row(
+                                                      children: <Widget>[
+                                                        Icon(
+                                                          Icons.medical_services_outlined,
+                                                          color: Colors.white,
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(left: 5.0),
+                                                          child: Text(
+                                                            "Medication",
+                                                            style: TextStyle(
+                                                                color: Colors.white
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Spacer(),
+                                                        Text(
+                                                          "73%",
+                                                          style: TextStyle(
+                                                              color: Colors.white
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                          height: ScreenUtil.instance.setHeight(10.0),
+                                                          width: ScreenUtil.instance.setWidth(120.0),
+                                                          child: Padding(
+                                                            padding: const EdgeInsets.only(left: 20.0),
+                                                            child: LinearPercentIndicator(
+                                                              alignment: MainAxisAlignment.center,
+                                                              width: MediaQuery.of(context).size.width - 310,
+                                                              animation: false,
+                                                              lineHeight: 8.0,
+                                                              // animationDuration: 2000,
+                                                              percent: 0.5,
+                                                              // center: Text("100.0%"),
+                                                              // linearStrokeCap: LinearStrokeCap.roundAll,
+                                                              linearStrokeCap: LinearStrokeCap.butt,
+                                                              progressColor: Colors.white,
+                                                              onAnimationEnd: (){
+                                                                Navigator.pushReplacementNamed(context, '/login');
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                color: const Color(0x33ffffff),
+                                                height: ScreenUtil.instance.setHeight(44),
+                                                width: ScreenUtil.instance.setWidth(155),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Row(
+                                                      children: <Widget>[
+                                                        Icon(
+                                                          Icons.medical_services_outlined,
+                                                          color: Colors.white,
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(left: 5.0),
+                                                          child: Text(
+                                                            "Homecare",
+                                                            style: TextStyle(
+                                                                color: Colors.white
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Spacer(),
+                                                        Text(
+                                                          "55%",
+                                                          style: TextStyle(
+                                                              color: Colors.white
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                          height: ScreenUtil.instance.setHeight(10.0),
+                                                          width: ScreenUtil.instance.setWidth(120.0),
+                                                          child: Padding(
+                                                            padding: const EdgeInsets.only(left: 20.0),
+                                                            child: LinearPercentIndicator(
+                                                              alignment: MainAxisAlignment.center,
+                                                              width: MediaQuery.of(context).size.width - 310,
+                                                              animation: false,
+                                                              lineHeight: 8.0,
+                                                              // animationDuration: 2000,
+                                                              percent: 0.5,
+                                                              // center: Text("100.0%"),
+                                                              // linearStrokeCap: LinearStrokeCap.roundAll,
+                                                              linearStrokeCap: LinearStrokeCap.butt,
+                                                              progressColor: Colors.white,
+                                                              onAnimationEnd: (){
+                                                                Navigator.pushReplacementNamed(context, '/login');
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        ),
+                                      ],
+                                      scrollDirection: Axis.horizontal,
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 5,
+                                    thickness: 2,
+                                    indent: 0,
+                                    endIndent: 0,
+                                  ),
+                                  Container(
+                                    height: ScreenUtil.instance.setHeight(110),
+                                    width: ScreenUtil.instance.setWidth(350),
+                                    // child: BezierChart(
+                                    //   bezierChartScale: BezierChartScale.CUSTOM,
+                                    //   xAxisCustomValues: const [0, 5, 10, 15, 20, 25, 30, 35],
+                                    //   series: const [
+                                    //     BezierLine(
+                                    //       label: "Custom 1",
+                                    //       data: const [
+                                    //         DataPoint<double>(value: 10, xAxis: 0),
+                                    //         DataPoint<double>(value: 130, xAxis: 5),
+                                    //         DataPoint<double>(value: 50, xAxis: 10),
+                                    //         DataPoint<double>(value: 150, xAxis: 15),
+                                    //         DataPoint<double>(value: 75, xAxis: 20),
+                                    //         DataPoint<double>(value: 0, xAxis: 25),
+                                    //         DataPoint<double>(value: 5, xAxis: 30),
+                                    //         DataPoint<double>(value: 45, xAxis: 35),
+                                    //       ],
+                                    //     ),
+                                    //     BezierLine(
+                                    //       lineColor: Colors.blue,
+                                    //       lineStrokeWidth: 2.0,
+                                    //       label: "Custom 2",
+                                    //       data: const [
+                                    //         DataPoint<double>(value: 5, xAxis: 0),
+                                    //         DataPoint<double>(value: 50, xAxis: 5),
+                                    //         DataPoint<double>(value: 30, xAxis: 10),
+                                    //         DataPoint<double>(value: 30, xAxis: 15),
+                                    //         DataPoint<double>(value: 50, xAxis: 20),
+                                    //         DataPoint<double>(value: 40, xAxis: 25),
+                                    //         DataPoint<double>(value: 10, xAxis: 30),
+                                    //         DataPoint<double>(value: 30, xAxis: 35),
+                                    //       ],
+                                    //     ),
+                                    //   ],
+                                    //   config: BezierChartConfig(
+                                    //     verticalIndicatorStrokeWidth: 3.0,
+                                    //     verticalIndicatorColor: Colors.black26,
+                                    //     showVerticalIndicator: true,
+                                    //     backgroundColor: const Color(0xffd17b58),
+                                    //     snap: false,
+                                    //   ),
+                                    // ),
+                                    child: LineChart(
+                                      sampleData2(),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: ListView.builder(
+                                      itemBuilder: (context, position) {
+                                        return Column(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                // color: const Color(0x33ffffff),
+                                                height: ScreenUtil.instance.setHeight(60),
+                                                width: ScreenUtil.instance.setWidth(70),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Text(
+                                                      "80%",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: ScreenUtil.instance.setSp(15.0),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Exforge",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: ScreenUtil.instance.setSp(15.0),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "1000mg",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: ScreenUtil.instance.setSp(8.0),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        );
+                                      },
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: 20,
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 5,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                                      child: RaisedButton(
+                                        color: const Color(0xff387b96),
+                                        onPressed: (){},
+                                        child: Text(
+                                          "See All",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                            side: BorderSide(color: Colors.black26)
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Container(
                               // height: 130,
@@ -825,6 +1138,189 @@ class _HomeState extends State<Home> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: const Color(0xffd17b58),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                // mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    "Appointments",
+                                    style: TextStyle(
+                                        color: Colors.white
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: ListView.builder(
+                                      itemBuilder: (context, position) {
+                                        return Row(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(8.0, 4.0, 0.0, 6.0),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5.0),
+                                                  color: Colors.white,
+                                                ),
+                                                // color: Colors.white,
+                                                height: ScreenUtil.instance.setHeight(65),
+                                                width: ScreenUtil.instance.setWidth(58),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Text(
+                                                      "October",
+                                                      style: TextStyle(
+                                                        color: const Color(0xff387b96),
+                                                        fontSize: ScreenUtil.instance.setSp(10.0),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "09",
+                                                      style: TextStyle(
+                                                        color: const Color(0xff387b96),
+                                                        fontSize: ScreenUtil.instance.setSp(15.0),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "Friday",
+                                                      style: TextStyle(
+                                                        color: const Color(0xff387b96),
+                                                        fontSize: ScreenUtil.instance.setSp(8.0),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(6.0, 4.0, 0.0, 6.0),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5.0),
+                                                  color: const Color(0x33ffffff),
+                                                ),
+                                                // color: const Color(0x33ffffff),
+                                                height: ScreenUtil.instance.setHeight(65),
+                                                width: ScreenUtil.instance.setWidth(278),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Align(
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.fromLTRB(8.0, 4.0, 0.0, 0.0),
+                                                        child: Text(
+                                                          "Dr.Abbas",
+                                                          textAlign: TextAlign.start,
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: ScreenUtil.instance.setSp(14.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      alignment: Alignment.topLeft,
+                                                    ),
+                                                    Align(
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.fromLTRB(8.0, 2.0, 0.0, 0.0),
+                                                        child: Text(
+                                                          "Follow Up",
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: ScreenUtil.instance.setSp(10.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      alignment: Alignment.centerLeft,
+                                                    ),
+                                                    Align(
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.fromLTRB(8.0, 0.0, 16.0, 2.0),
+                                                        child: Row(
+                                                          children: [
+                                                            Text(
+                                                              "Online",
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: ScreenUtil.instance.setSp(8.0),
+                                                              ),
+                                                            ),
+                                                            Spacer(),
+                                                            Icon(
+                                                              Icons.watch_later_outlined,
+                                                              color: Colors.white,
+                                                            ),
+                                                            Text(
+                                                              "12:30 PM",
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: ScreenUtil.instance.setSp(14.0),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                        ),
+                                                      ),
+                                                      alignment: Alignment.bottomLeft,
+                                                    ),
+                                                  ],
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                        );
+                                      },
+                                      itemCount: 20,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(8.0, 6.0, 8.0, 0.0),
+                                    child: SizedBox(
+                                      width: double.infinity,
+                                      child: RaisedButton(
+                                        color: const Color(0xffd17b58),
+                                        onPressed: (){},
+                                        child: Text(
+                                          "New Appointments",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(5.0),
+                                            side: BorderSide(color: Colors.black26)
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 5,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                                      child: RaisedButton(
+                                        color: const Color(0xffd17b58),
+                                        onPressed: (){},
+                                        child: Text(
+                                          "See All",
+                                          style: TextStyle(
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                            side: BorderSide(color: Colors.black26)
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -836,235 +1332,495 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 20.0),
+                  //   child: Container(
+                  //     child: Table(
+                  //       border: TableBorder(
+                  //           verticalInside: new BorderSide(color: Colors.grey, width: 1.0),
+                  //           horizontalInside: new BorderSide(color: Colors.grey, width: 1.0)
+                  //       ),
+                  //       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                  //       children: [
+                  //         TableRow(
+                  //           children: <Widget>[
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.call_outlined,
+                  //                         color: const Color(0xff387b96),
+                  //                       ),
+                  //                       Text(
+                  //                         'Call',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.calendar_today_outlined,
+                  //                         color: const Color(0xffd17b58),
+                  //                       ),
+                  //                       Text(
+                  //                         'Appointments',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.message_outlined,
+                  //                         color: const Color(0xff387b96),
+                  //                       ),
+                  //                       Text(
+                  //                         'Messages',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //         TableRow(
+                  //           children: <Widget>[
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.note_add_outlined,
+                  //                         color: const Color(0xff387b96),
+                  //                       ),
+                  //                       Text(
+                  //                         'Doctor\'s Note',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.upload_outlined,
+                  //                         color: const Color(0xffd17b58),
+                  //                       ),
+                  //                       Text(
+                  //                         'Upload',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.add,
+                  //                         color: const Color(0xff387b96),
+                  //                       ),
+                  //                       Text(
+                  //                         'Add Readings',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //         TableRow(
+                  //           children: <Widget>[
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.find_in_page_outlined,
+                  //                         color: const Color(0xff387b96),
+                  //                       ),
+                  //                       Text(
+                  //                         'Symptom Checker',
+                  //                         textAlign: TextAlign.center,
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.shopping_bag_outlined,
+                  //                         color: const Color(0xffd17b58),
+                  //                       ),
+                  //                       Text(
+                  //                         'Packages',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             TableCell(
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.all(8.0),
+                  //                 child: FlatButton(
+                  //                   onPressed: (){},
+                  //                   child: Column(
+                  //                     children: <Widget>[
+                  //                       Icon(
+                  //                         Icons.view_module_rounded,
+                  //                         color: const Color(0xff387b96),
+                  //                       ),
+                  //                       Text(
+                  //                         'More',
+                  //                         style: TextStyle(
+                  //                           color: Colors.grey,
+                  //                           fontSize: ScreenUtil.instance.setSp(10.0),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Container(
-                      child: Table(
-                        border: TableBorder(
-                            verticalInside: new BorderSide(color: Colors.grey, width: 1.0),
-                            horizontalInside: new BorderSide(color: Colors.grey, width: 1.0)
-                        ),
-                        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                        children: [
-                          TableRow(
+                      child: Column(
+                        children: <Widget>[
+                          Row(
                             children: <Widget>[
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.call_outlined,
-                                          color: const Color(0xff387b96),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.call_outlined,
+                                        color: const Color(0xff387b96),
+                                      ),
+                                      Text(
+                                        'Call',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
                                         ),
-                                        Text(
-                                          'Call',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.calendar_today_outlined,
-                                          color: const Color(0xffd17b58),
+                              Container(
+                                color: Colors.grey,
+                                height: ScreenUtil.instance.setHeight(40), width: 1,
+                                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(3.0, 8.0, 0.0, 8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.calendar_today_outlined,
+                                        color: const Color(0xffd17b58),
+                                      ),
+                                      Text(
+                                        'Appointments',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
                                         ),
-                                        Text(
-                                          'Appointments',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.message_outlined,
-                                          color: const Color(0xff387b96),
+                              Container(
+                                color: Colors.grey,
+                                height: ScreenUtil.instance.setHeight(40), width: 1,
+                                margin: EdgeInsets.fromLTRB(8.0, 0.0, 10.0, 0.0),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.message_outlined,
+                                        color: const Color(0xff387b96),
+                                      ),
+                                      Text(
+                                        'Messages',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
                                         ),
-                                        Text(
-                                          'Messages',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ],
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           ),
-                          TableRow(
-                            children: <Widget>[
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.note_add_outlined,
-                                          color: const Color(0xff387b96),
-                                        ),
-                                        Text(
-                                          'Doctor\'s Note',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.upload_outlined,
-                                          color: const Color(0xffd17b58),
-                                        ),
-                                        Text(
-                                          'Upload',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.add,
-                                          color: const Color(0xff387b96),
-                                        ),
-                                        Text(
-                                          'Add Readings',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          Divider(
+                            color: Colors.grey,
+                            height: 5,
+                            thickness: 1,
+                            indent: 0,
+                            endIndent: 0,
                           ),
-                          TableRow(
+                          Row(
                             children: <Widget>[
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.find_in_page_outlined,
-                                          color: const Color(0xff387b96),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.note_add_outlined,
+                                        color: const Color(0xff387b96),
+                                      ),
+                                      Text(
+                                        'Doctor\'s\nNote',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
                                         ),
-                                        Text(
-                                          'Symptom Checker',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.shopping_bag_outlined,
-                                          color: const Color(0xffd17b58),
+                              Container(
+                                color: Colors.grey,
+                                height: ScreenUtil.instance.setHeight(40), width: 1,
+                                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.upload_outlined,
+                                        color: const Color(0xffd17b58),
+                                      ),
+                                      Text(
+                                        'Upload',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
                                         ),
-                                        Text(
-                                          'Packages',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                              TableCell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FlatButton(
-                                    onPressed: (){},
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.view_module_rounded,
-                                          color: const Color(0xff387b96),
+                              Container(
+                                color: Colors.grey,
+                                height: ScreenUtil.instance.setHeight(40), width: 1,
+                                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.add,
+                                        color: const Color(0xff387b96),
+                                      ),
+                                      Text(
+                                        'Add\nReadings',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
                                         ),
-                                        Text(
-                                          'More',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: ScreenUtil.instance.setSp(10.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ],
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          ),
+                          Divider(
+                            color: Colors.grey,
+                            height: 5,
+                            thickness: 1,
+                            indent: 0,
+                            endIndent: 0,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.find_in_page_outlined,
+                                        color: const Color(0xff387b96),
+                                      ),
+                                      Text(
+                                        'Symptom\nChecker',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                color: Colors.grey,
+                                height: ScreenUtil.instance.setHeight(40), width: 1,
+                                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.shopping_bag_outlined,
+                                        color: const Color(0xffd17b58),
+                                      ),
+                                      Text(
+                                        'Packages',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                color: Colors.grey,
+                                height: ScreenUtil.instance.setHeight(40), width: 1,
+                                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FlatButton(
+                                  onPressed: (){},
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.view_module_rounded,
+                                        color: const Color(0xff387b96),
+                                      ),
+                                      Text(
+                                        'More',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: ScreenUtil.instance.setSp(10.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           ),
                         ],
                       ),
